@@ -5,7 +5,9 @@ dep:
 
 local-db:
 	@docker-compose -p fulltext-search down
-	@docker-compose -p fulltext-search up -d
+	@mkdir -p ./config/elasticsearch/data
+	@chmod 777 ./config/elasticsearch/data
+	@docker-compose -p fulltext-search up -d --build
 	@echo "Waiting for database connection..."
 	@while ! docker exec fulltext-search_postgres_1 pg_isready -h localhost -p 5432 > /dev/null; do \
 			sleep 1; \
