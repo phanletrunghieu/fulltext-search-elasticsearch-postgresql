@@ -17,7 +17,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ./config/elasticsearch/data:/usr/share/elasticsearch/data
+      # - ./config/elasticsearch/data:/usr/share/elasticsearch/data
       - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     environment:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
@@ -30,6 +30,7 @@ services:
     volumes:
       - ./config/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./config/logstash/pipeline/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./config/logstash/.logstash_jdbc_last_run:/root/.logstash_jdbc_last_run
     environment:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     env_file:
