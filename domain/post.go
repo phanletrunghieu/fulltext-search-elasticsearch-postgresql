@@ -41,7 +41,7 @@ func SearchByText(c context.Context, keyword string, offset, limit int) ([]*Post
 
 	res, err := elasticClient.Search(
 		elasticClient.Search.WithContext(context.Background()),
-		elasticClient.Search.WithIndex(elasticDB.ElasticIndexName),
+		elasticClient.Search.WithIndex("posts"),
 		elasticClient.Search.WithBody(buff),
 		elasticClient.Search.WithTrackTotalHits(true),
 		elasticClient.Search.WithPretty(),

@@ -9,8 +9,6 @@ import (
 
 var elasticClient *elasticsearch.Client
 
-const ElasticIndexName = "blogs"
-
 const (
 	dbHost = "localhost"
 	dbPort = 9200
